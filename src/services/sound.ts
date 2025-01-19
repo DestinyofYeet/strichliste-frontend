@@ -5,9 +5,6 @@ function getRand(list: Array<string>) {
   return list[Math.floor(Math.random() * list.length)]
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function playCashSound(_params?: CreateTransactionParams): void {
-  dispense.play();
 const baseFiles = [
   "ka-ching.wav",
   "mario-coin.wav"
