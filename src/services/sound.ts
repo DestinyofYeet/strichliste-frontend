@@ -26,7 +26,7 @@ function getDispense(file?: string) {
 }
 
 const soundFiles = new Map<number, Array<string>>([
-  // [1, ["mario-coin.wav"]]
+  [28, ["minion_banana.wav"]]
 ]);
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
