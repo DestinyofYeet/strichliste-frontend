@@ -1,8 +1,12 @@
 import { Howl } from 'howler';
 import { CreateTransactionParams } from '../store/reducers';
 
-function getRand(list: Array<string>) {
+function getRand(list: Array<string>) : string {
   return list[Math.floor(Math.random() * list.length)]
+}
+
+function playSound(sound: string) {
+  getDispense("sounds/" + sound).play();
 }
 
 const einzahlungsFiles = [
@@ -26,7 +30,8 @@ function getDispense(file?: string) {
 }
 
 const soundFiles = new Map<number, Array<string>>([
-  [28, ["minion_banana.wav"]]
+  [28, ["minion_banana.wav"]],
+  [6, ["moneyboy_orangensaft.wav"]]
 ]);
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -43,18 +48,18 @@ export function playCashSound(_params?: CreateTransactionParams): void {
     const articleId = _params.articleId;
     const soundFileArray = soundFiles.get(articleId);
     if (soundFileArray != null) {
-      getDispense(getRand(soundFileArray)).play();
+      playSound(getRand(soundFileArray));
     } else {
-      getDispense(getRand(baseFiles)).play();
+      playSound(getRand(baseFiles));
     }
   } else if (_params.amount != null && _params.articleId == null && _params.recipientId == null){
     // Geld eingezahlt
     const amount = _params.amount;
     if (amount > 0){
       
-      getDispense(getRand(einzahlungsFiles)).play();
+      playSound(getRand(einzahlungsFiles));
     } else {
-      getDispense(getRand(auszahlungsFiles)).play();
+      playSound(getRand(auszahlungsFiles));
     }
   }
 }
