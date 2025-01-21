@@ -11,7 +11,11 @@ function playSound(sound: string) {
 
 const einzahlungsFiles = [
   "spongebob_moneten.wav"
-]
+];
+
+const failedFiles = [
+  "windows_error.wav"
+];
 
 const auszahlungsFiles = [
   "wobble.wav"
@@ -35,7 +39,12 @@ const soundFiles = new Map<number, Array<string>>([
 ]);
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function playCashSound(_params?: CreateTransactionParams): void {
+export function playCashSound(_params?: CreateTransactionParams, failed = false): void {
+  if (failed){
+      playSound(getRand(failedFiles));
+      return;
+  }
+  
   if (_params == null){
     getDispense(getRand(baseFiles)).play();
     return;

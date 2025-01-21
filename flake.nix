@@ -14,6 +14,7 @@
       devShells.x86_64-linux.default = pkgs.mkShell {
         nativeBuildInputs = with pkgs; [
           yarn
+          typescript-language-server
         ];
 
         NODE_OPTIONS = "--openssl-legacy-provider";
