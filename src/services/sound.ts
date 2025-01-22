@@ -23,7 +23,8 @@ const auszahlungsFiles = [
 
 const baseFiles = [
   "ka-ching.wav",
-  "mario-coin.wav"
+  "mario-coin.wav",
+  "futterlucke.wav"
 ];
 
 const mateFiles = [
@@ -38,31 +39,40 @@ function getDispense(file?: string) {
 }
 
 const soundFiles = new Map<number, Array<string>>([
+  // mio mio
+  [1, mateFiles],
   // Wasser
   [3, ["wasser_1.wav"]],
   // Club mate
-  [4, ["club_mate_1.wav"]],
-  // mio mio
-  [1, mateFiles],
-  // mio mio bananae
-  [28, ["minion_banana.wav", "mio_mio_banana_2.wav"]],
-  // Duplo
-  [11, ["duplo_1.wav", "duplo_2.wav"]],
+  [4, ["club_mate_1.wav"].concat(mateFiles)],
+  // saftschorle
+  [6, ["moneyboy_orangensaft.wav"]],
+  // Bier
+  // [7, ["bier.wav"]],
+  // Bueno
+  [9, ["bueno_1.wav"]],
+  // Erdnüsse klein
+  [12, ["eier.wav"]],
+  // belasto
+  [14, ["emotional-damage.wav"]],
   // Snickers
   [16, ["snickers_1.wav"]],
   // Maoam
   [19, ["maoam_1.wav"]],
-  // saftschorle
-  [6, ["moneyboy_orangensaft.wav"]],
-  // belasto
-  [14, ["emotional-damage.wav"]],
-  // [7, ["bier.wav"]],
-  // radler
-  [27, ["radler.wav"]],
+  // Mentos
+  [20, ["eier.wav"]],
+  // spezi
+  [23, ["spezifische_spezi_fischer.wav"]],
   // kaffee
   [24, ["coffee.wav", "coffee_2.wav", "coffee_3.wav"]],
-  // spezi
-  [23, ["spezifische_spezi_fischer.wav"]]
+  // Pizza
+  [25, ["pizza_1.wav"]],
+  // radler
+  [27, ["radler.wav"]],
+  // mio mio bananae
+  [28, ["minion_banana.wav", "mio_mio_banana_2.wav"]],
+  // Duplo
+  [30, ["duplo_1.wav", "duplo_2.wav"]],
 ]);
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
