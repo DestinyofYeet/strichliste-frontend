@@ -26,6 +26,10 @@ const baseFiles = [
   "mario-coin.wav"
 ];
 
+const mateFiles = [
+  "mate_01.wav"
+];
+
 function getDispense(file?: string) {
   if (file == null) {
     file = getRand(baseFiles);
@@ -34,12 +38,30 @@ function getDispense(file?: string) {
 }
 
 const soundFiles = new Map<number, Array<string>>([
-  [28, ["minion_banana.wav"]],
+  // Wasser
+  [3, ["wasser_1.wav"]],
+  // Club mate
+  [4, ["club_mate_1.wav"]],
+  // mio mio
+  [1, mateFiles],
+  // mio mio bananae
+  [28, ["minion_banana.wav", "mio_mio_banana_2.wav"]],
+  // Duplo
+  [11, ["duplo_1.wav", "duplo_2.wav"]],
+  // Snickers
+  [16, ["snickers_1.wav"]],
+  // Maoam
+  [19, ["maoam_1.wav"]],
+  // saftschorle
   [6, ["moneyboy_orangensaft.wav"]],
+  // belasto
   [14, ["emotional-damage.wav"]],
   // [7, ["bier.wav"]],
+  // radler
   [27, ["radler.wav"]],
-  [24, ["coffee.wav"]],
+  // kaffee
+  [24, ["coffee.wav", "coffee_2.wav", "coffee_3.wav"]],
+  // spezi
   [23, ["spezifische_spezi_fischer.wav"]]
 ]);
 
