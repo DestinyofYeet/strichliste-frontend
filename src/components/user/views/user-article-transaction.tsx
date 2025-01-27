@@ -16,6 +16,7 @@ async function onSelect(
     props.match.params.id,
     {
       articleId: article.id,
+      articleName: article.name,
     }
   );
   if (result) {

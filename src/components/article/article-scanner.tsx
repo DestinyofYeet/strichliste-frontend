@@ -28,8 +28,10 @@ export const ArticleScanner = (props: Props) => {
       setMessage('ARTICLE_FETCHED_BY_BARCODE');
       setArticle(article);
       if (article) {
+        console.log(article);
         startCreatingTransaction(dispatch, props.userId, {
           articleId: article.id,
+          articleName: article.name,
         });
       }
     } catch (error) {

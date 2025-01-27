@@ -78,6 +78,7 @@ export interface CreateTransactionParams {
   articleId?: number;
   recipientId?: string;
   comment?: string;
+  articleName?: string;
 }
 export async function startCreatingTransaction(
   dispatch: Dispatch,

@@ -10,7 +10,7 @@ function playSound(sound: string) {
 }
 
 const einzahlungsFiles = [
-  "spongebob_moneten.wav"
+  "spongebob_moneten.wav",
 ];
 
 const failedFiles = [
@@ -27,10 +27,6 @@ const baseFiles = [
   "futterlucke.wav"
 ];
 
-const mateFiles = [
-  "mate_01.wav"
-];
-
 function getDispense(file?: string) {
   if (file == null) {
     file = getRand(baseFiles);
@@ -38,41 +34,8 @@ function getDispense(file?: string) {
   return new Howl({ src: [file]});
 }
 
-const soundFiles = new Map<number, Array<string>>([
-  // mio mio
-  [1, mateFiles],
-  // Wasser
-  [3, ["wasser_1.wav"]],
-  // Club mate
-  [4, ["club_mate_1.wav"].concat(mateFiles)],
-  // saftschorle
-  [6, ["moneyboy_orangensaft.wav"]],
-  // Bier
-  // [7, ["bier.wav"]],
-  // Bueno
-  [9, ["bueno_1.wav"]],
-  // Erdnüsse klein
-  [12, ["eier.wav"]],
-  // belasto
-  [14, ["emotional-damage.wav"]],
-  // Snickers
-  [16, ["snickers_1.wav"]],
-  // Maoam
-  [19, ["maoam_1.wav"]],
-  // Mentos
-  [20, ["eier.wav"]],
-  // spezi
-  [23, ["spezifische_spezi_fischer.wav"]],
-  // kaffee
-  [24, ["coffee.wav", "coffee_2.wav", "coffee_3.wav"]],
-  // Pizza
-  [25, ["pizza_1.wav"]],
-  // radler
-  [27, ["radler.wav"]],
-  // mio mio bananae
-  [28, ["minion_banana.wav", "mio_mio_banana_2.wav"]],
-  // Duplo
-  [30, ["duplo_1.wav", "duplo_2.wav"]],
+const soundFiles = new Map<string, Array<string>>([
+  ["spezi", ["spezifische_spezi_fischer.wav"]],
 ]);
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -81,7 +44,7 @@ export function playCashSound(_params?: CreateTransactionParams, failed = false)
       playSound(getRand(failedFiles));
       return;
   }
-  
+
   if (_params == null){
     getDispense(getRand(baseFiles)).play();
     return;
@@ -89,10 +52,10 @@ export function playCashSound(_params?: CreateTransactionParams, failed = false)
 
   console.log(_params);
 
-  if (_params.articleId != null) {
+  if (_params.articleName != null) {
     // Artikel gekauft
-    const articleId = _params.articleId;
-    const soundFileArray = soundFiles.get(articleId);
+    const articleName = _params.articleName;
+    const soundFileArray = soundFiles.get(articleName);
     if (soundFileArray != null) {
       playSound(getRand(soundFileArray));
     } else {
@@ -102,7 +65,6 @@ export function playCashSound(_params?: CreateTransactionParams, failed = false)
     // Geld eingezahlt
     const amount = _params.amount;
     if (amount > 0){
-      
       playSound(getRand(einzahlungsFiles));
     } else {
       playSound(getRand(auszahlungsFiles));
